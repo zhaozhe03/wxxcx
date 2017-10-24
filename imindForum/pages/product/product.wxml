@@ -1,0 +1,9 @@
+<!--pages/product/product.wxml-->
+<view>
+  <image class="image" mode="widthFix" class='image' src='../../images/timg.jpg'></image>
+</view>
+<button bindtap='bindOrder' class="button" type="warn">下单</button>
+<modal hidden="{{hidden}}" title="温馨提示" bindconfirm="confirm" no-cancel='true'>
+  {{tip}}
+</modal>
+

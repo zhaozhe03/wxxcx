@@ -1,0 +1,53 @@
+{
+  "pages":[
+    
+    "pages/index/index",
+    "pages/organization/organization",
+    "pages/userAdd/userAdd",
+    "pages/orderList/orderList",
+    "pages/my/my",
+    "pages/userOrder/userOrder",
+    "pages/TFN/TFN",
+    "pages/product/product",
+    "pages/BBS/BBS",
+    "pages/notice/notice"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "明德论坛",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color":"#ccc",
+    "selectedColor":"white",
+    "backgroundColor":"#4f8edc",
+    "borderStyle":"#4f8edc",
+    "position":"",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "论坛",
+        "iconPath":"images/index.png",
+        "selectedIconPath":"images/indexselect.png"
+      },
+      {
+        "pagePath": "pages/BBS/BBS",
+        "text": "公告",
+        "iconPath": "images/forum.png",
+        "selectedIconPath": "images/forumselect.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/myselect.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

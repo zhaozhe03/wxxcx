@@ -1,0 +1,63 @@
+/* pages/BBS/BBS.wxss */
+.header{
+  width: 100%;
+  background-color: #1eb0a6;
+  opacity:0.8;
+}
+page{
+  width: 100%;
+  height: 100%;
+  background-color:#225054 ;
+}
+.clearfix {
+  clear: both;
+}
+.choice_box {
+  padding: 0.05px 2px 0.05px 2px;
+  margin: -3px auto;
+}
+
+.choice_item {
+  border-bottom: 1px solid #e4e4e4;
+  /*padding: 10rpx 0;*/
+  margin: 5px;
+  background: #ffffff;
+  position: relative;
+  
+}
+
+.choice_box .choice_list image {
+  float: left;
+  width: 180rpx;
+  height: 128rpx;
+  margin: 20rpx 0 20rpx 20rpx;
+}
+
+.title {
+  float:right;
+  width: 68%;
+  color: #555;
+  vertical-align: middle;
+  padding: 28rpx 0 0 30rpx;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 22px;
+  margin-bottom:30px;
+}
+.orderPrice{
+    font-size: 12px;
+    font-style: normal;
+    padding-top: 14rpx;
+    position: absolute;
+    bottom: 10px;
+    right:10px;
+} 
+.createData{
+   font-size: 12px;
+}
+/* 去除滚动条 */
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color:transparent;
+}

@@ -1,0 +1,41 @@
+<view>
+  <form class="form_box" bindsubmit="formBindsubmit" bindreset="formResetE">
+    <view class="order">
+      <label class="input_tit">单位名称：</label>
+      <input name="name" confirm-type="next" placeholder="请输入单位名称" placeholder-class="placeholder" class="inputwid" />
+    </view>
+    <view class="order">
+      <label class="input_tit">单位地址：</label>
+      <!-- <input name="add" placeholder="请输入中文" placeholder-class="placeholder" class="inputwid"  /> -->
+      <view class="inputwid"  placeholder="请选择地址" bindtap='pickerAdd'>{{provice}} {{city}}</view>
+    </view>
+    <view class="order">
+      <label class="input_tit">姓 名：</label>
+      <input name="userName" confirm-type="next" placeholder="负责人姓名"  placeholder-class="placeholder" class="inputwid" />
+    </view>
+    <view class="order">
+      <label class="input_tit">电 话：</label>
+      <input name="mobile" type="number" confirm-type="next" placeholder="负责人电话" placeholder-class="placeholder" class="inputwid" />
+    </view>
+    <view class="order">
+      <label class="input_tit">邀请人：</label>
+      <input name="inviter" placeholder="请输入邀请人" placeholder-class="placeholder" class="inputwid" />
+    </view>
+    <modal hidden="{{hidden}}" title="温馨提示" bindconfirm="confirm" no-cancel='true'>
+      {{tip}}
+    </modal>
+    
+    <button hidden='{{button_hidden}}' bindtap='adduser' style='top:90px' form-type="submit" type="warn">添加机构</button>
+  </form>
+</view>
+<view > 
+<picker-view hidden='{{picker_view}}'   indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+  <picker-view-column >
+    <view wx:for="{{provinces}}" data-item-index="{{index}}" style="line-height: 50px;text-align: center;">{{item}}</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view wx:for="{{cityArr}}" style="line-height: 50px;text-align: center;">{{item}}市</view>
+  </picker-view-column>
+</picker-view>
+</view>
+<button hidden='{{button_picker}}' bindtap="inputFocus" style='z-index:999;width: 90%;left:5%;position:fixed;bottom: 10px;' form-type="submit" type="warn">确定</button>

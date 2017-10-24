@@ -1,0 +1,54 @@
+/* pages/userOrder/userOrder.wxss */
+.listHeader{
+  margin-top: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.table {
+    border: 2px solid #04a5e6;
+    font-size: 12px;
+    margin-top: 5px;
+    margin: 5px 5px 70px 5px;
+} 
+.tr {
+    display: flex;
+    width: 1400rpx;
+    align-items: center;
+} 
+.td {
+    width: 300rpx;
+    height: 2rem;
+    justify-content: center;
+    text-align: center;
+    word-wrap: break-word;
+    flex-shrink: 0;
+    line-height: 2rem;
+} 
+.gray {
+    background:#04a5e6;
+    
+}
+.header{
+  background-color: #04a5e6;
+  display: flex;
+  width: 1400rpx;
+  align-items: center;
+  font-size: 20px;
+  color: #fff;
+  left: 5px
+}
+.font{
+  color: #fff;
+}
+.button {
+  width: 90%;
+  position:fixed;
+  bottom: 10px;
+  left:5%;
+}
+/* 去除滚动条 */
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color:transparent;
+}

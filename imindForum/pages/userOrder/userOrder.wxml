@@ -1,0 +1,43 @@
+<!--pages/userOrder/userOrder.wxml-->
+<view class='listHeader'><text >{{headerText}}</text></view>
+
+<scroll-view scroll-x style='width:100%;'  bindscroll='queryMultipleNodes'  id='scroll' class='table'>
+  <view class='tr header'>
+    <text class='td font' style='width:100rpx;'></text>
+    <view class='td'><text class='name'>姓名</text></view>
+    <text class='td'>电话</text>
+    <text wx:if="{{textIndex}}" class='td font' style='width:100rpx;'></text>
+    <text class='td' style='width:600rpx'>工作单位</text>
+  </view>
+  <block wx:for="{{arr}}"  wx:for-index="table_index" >
+    <view class='tr' bindlongtap='tapModle' data-item-index="{{table_index}}" wx:if="{{table_index % 2 == 0}}">
+      <text class='td' style='width:100rpx;'>{{table_index+1}}</text>
+      <text class='td'>{{item.name}}</text>
+      <text class='td'>{{item.mobile}}</text>
+      <text wx:if="{{textIndex}}" class='td' style='width:100rpx;'>{{table_index+1}}</text>
+      <text class='td' style='width:600rpx'>{{item.workplace}}</text>
+    </view>
+    <view class='tr gray' bindlongtap='tapModle' data-item-index="{{table_index}}" wx:else>
+      <text class='td font' style='width:100rpx;'>{{table_index+1}}</text>
+      <text class='td font'>{{item.name}}</text>
+      <text class='td font'>{{item.mobile}}</text>
+      <text wx:if="{{textIndex}}" class='td font' style='width:100rpx;'>{{table_index+1}}</text>
+      <text class='td font' style='width:600rpx'>{{item.workplace}}</text>
+    </view>
+  </block>
+</scroll-view>
+<modal hidden="{{hidden}}" title="温馨提示" confirm-text="是的" cancel-text="不" bindconfirm="confirm" bindcancel="cancel" showCancel='false' >
+        {{tip}}
+</modal>
+<button bindtap='sendOrder' class='button' type='warn'>支付{{pic}}</button>
+
+
+
+<!-- <view wx:if="{{show}}" class="mask-form">
+    <view class="mask-content-container" wx:for="{{cols}}" wx:for-item="col" wx:for-index="col_index">
+        <text class="list-mask-title">{{titles[col_index]}}</text>
+        <input class="list-mask-input" type="text" value="{{col}}" data-id="{{col_index}}" bindblur="dataChange" />
+    </view>
+    <button class="btn btn-confirm" type="success" bindtap="editModel">确认</button>
+    <button class="btn btn-cancle" type="default" bindtap="closeModel">取消</button>
+</view>  -->

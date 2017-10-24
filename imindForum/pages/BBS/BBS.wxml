@@ -1,0 +1,16 @@
+<!--pages/BBS/BBS.wxml-->
+<image class="header" mode="widthFix" src="../../images/headerBBS.jpg"></image>
+<view class="box">
+  <view class="choice_box">
+    <view class="choice_list">
+      <block wx:for="{{hotList}}">
+          <view class="choice_item" bindtap="toNotice" data-item-index="{{item.id}}">
+            <image mode='aspectFill' src="{{item.img}}" />
+            <view class="title">{{item.newsTitle}}</view>
+            <view class="orderPrice"><span>{{item.userName}}</span> </view>
+          <view class="clearfix"></view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

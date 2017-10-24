@@ -1,0 +1,115 @@
+.lt{
+  float: left;
+}
+.rt{
+  float: right;
+}
+page{
+  background-color: #eee;
+   font-family: "Microsoft YaHei" ; 
+   color: #000; 
+}
+
+.attendee_hint{
+  /*margin:0 10px 0 0;*/
+  padding: 0px;
+  background: #eee;
+}
+form_box {
+  width: 94%;
+  padding: 0 10rpx;
+  text-align: center;
+}
+
+.test {
+  font-size: 20px;
+  font-style: normal;
+  color: #888;
+  padding-bottom: 20rpx;
+}
+
+.order {
+  width: 92%;
+  margin: 5px auto;
+  display: flex;
+  overflow: hidden;
+}
+
+page {
+  background: #fff;
+  font-size: 15px;
+  font-style: normal;
+}
+
+.button {
+  width: 90%;
+  margin: 20px auto 0 18px;
+}
+
+.tip {
+  font-size: 16px;
+  font-style: normal;
+  margin: 20px auto 0 auto;
+  width: 85%;
+  color: crimson;
+  text-align: center;
+  line-height: 24px;
+}
+
+.interval {
+  width: 98%;
+  margin: 0 auto;
+}
+
+.input_tit {
+  /*float: left;
+  width: 22%;*/
+  display:inline-flex;
+  flex:1;
+  padding-top: 10px;
+}
+
+.input_right {
+  /*width: 76%;
+  float: left;*/
+  margin-top: 3px;
+}
+
+
+
+.inputext {
+  width: 80%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  display: inline-block;
+  text-align: center;
+  color: #999;
+}
+
+.inputwid {
+  /*width: 70%;*/
+  flex:3;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  display: inline-block;
+  color: #000;
+  font-size: 12px;
+  padding-top: 15rpx;
+  
+}
+.picker-box{
+  width: 92%;
+  margin: 5px auto;
+  /*display: flex;*/
+  overflow: hidden;
+}
+
+
+.errMsg{
+  font-color:red; 
+}
+
+.placeholder{
+  color: #ccc ;
+}
+/* #d81e06 红 */

@@ -1,0 +1,57 @@
+ <view class='box'>
+      <block wx:for="{{orderList}}">
+        <view  class="orderBox" style='{{item.wxstyle}}' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
+        <view class='orderList lt'>
+          <view  class="name lt">姓名：{{item.name}}</view>
+          <view  class="phone rt">电话：{{item.mobile}}</view>  
+          <view  class="jop lt" >工作单位：{{item.workplace}}</view> 
+          <!-- <image class="image rt" src='../../images/del2.png'  ></image> -->
+        </view>
+          <view class='buttonBox rt' animation="{{animationdata}}">
+            <view class='reCreate' data-item-index="{{index}}" catchtap="reCreate">修改</view>
+            <view class='del' data-item-index="{{index}}" catchtap="attention">删除</view>
+        </view>
+        </view>
+        
+      </block>
+    </view>
+    <button bindtap='sendOrder' class='button' type='warn'>提交订单</button>
+    <image class="img" src = "../../images/add.png" catchtap="navGetTo"></image>
+    
+    <modal hidden="{{userhidden}}" title="人员信息" form-type="submit" no-cancel="true" confirm-text="取消"  bindconfirm="changeCancel"  showCancel='false' >
+    <form  bindsubmit="formBindsubmit" reset="formReset">
+        <view class="order">
+        <label class="input_tit">姓 名：</label>
+        <input name="name" placeholder="请输入中文" placeholder-class="placeholder" value='{{user.name}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">身份证：</label>
+        <input name="idCard" placeholder="请输入中文" placeholder-class="placeholder" value='{{user.idCard}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">职 务：</label>
+        <input name="job" placeholder="请输入中文" placeholder-class="placeholder" value='{{user.job}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">电 话：</label>
+        <input name="mobile" type="number" placeholder="请输入中文" placeholder-class="placeholder" value='{{user.mobile}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">单 位：</label>
+        <input name="workplace" placeholder="请输入中文" placeholder-class="placeholder" value='{{user.workplace}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">发票抬头：</label>
+        <input name="title" placeholder="请输入中文" placeholder-class="placeholder" value='{{user.title}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">税 号：</label>
+        <input name="dutyParagraph"  placeholder="请输入中文" placeholder-class="placeholder" value='{{user.dutyParagraph}}' class="inputwid" />
+      </view>
+      <button form-type='submit' bindtap='changeConfirm' type='warn'>确认</button>
+       <modal hidden="{{hidden}}" title="温馨提示"  bindconfirm="confirm" no-cancel='true'>
+        {{tip}}
+      </modal>
+      </form>
+</modal>
+ 

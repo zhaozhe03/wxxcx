@@ -1,0 +1,62 @@
+/**index.wxss**/
+.lt{
+  float: left;
+}
+
+.rt{
+  float: right;
+}
+
+.header{
+  width: 100%;
+}
+.proBox{
+  margin: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  font-size: 13px;
+}
+
+.List{
+  width: 100%;
+  display: inherit;
+  margin-top: 20px;
+  overflow: hidden;
+  background:rgba(0,0,0,0.03);
+}
+
+.textList{
+  width: 55%;
+  overflow: visible;
+  height: 130px;
+}
+
+.title{
+  color: #000;
+  font-size: 16px;
+  margin-top: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.text{
+  margin-top: 3px;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+   -webkit-line-clamp:5;  
+}
+
+.img{
+  width: 150px;
+  height: 120px;
+  margin: 3px;
+}
+/* 去除滚动条 */
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color:transparent;
+}

@@ -1,0 +1,177 @@
+/* pages/notice/notice.wxss */
+page {
+  background-color: #fff;
+  font-size: 14px;
+  font-style: normal;
+}
+.container{
+  height:100%;
+}
+.contop {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.person {
+  position: absolute;
+  bottom: -90rpx;
+  left: 15px;
+  width: 150rpx;
+  text-align: center;
+}
+
+.person image {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+
+.pertext-left {
+  width: 150rpx;
+  text-align: center;
+  display: inline-block;
+  color: #999;
+  font-size: 11px;
+  font-style: normal;
+  padding: 10rpx 0rpx;
+  margin:0 auto;
+}
+.pertext-right{
+  float:right;
+  margin:10rpx;
+  color: #999;
+  font-size: 10px;
+  font-style: normal;
+}
+.zancon {
+  position: absolute;
+  right: 15px;
+  bottom: -55px;
+}
+
+.zancon image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.zancon_left {
+  width: 14px;
+  float: right;
+  text-align: center;
+  margin-right: 20px;
+}
+
+/*.zancon_rig{
+  width: 24px;
+  float: left;
+  text-align: center;
+}*/
+
+.zan_leftext, .zan_rigext {
+  font-size: 12px;
+  font-style: normal;
+  color: #999;
+}
+
+.swiper_box {
+  width: 100%;
+  height: 200px;
+}
+
+.swiper_box .slide-image {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.shopping_container {
+  padding: 0 30rpx;
+}
+
+.shopping_container .title {
+  margin: 20rpx 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.shopping_container .reason {
+  margin: 20rpx 0;
+  color: #939393;
+  line-height: 22px;
+}
+
+.wxParse {
+  padding: 0px 12px;
+  font-size: 14px;
+  font-style: normal;
+  margin-bottom:30px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.choice_box {
+  padding: 0 20rpx;
+}
+
+.choice_item {
+  border-bottom: 1px solid #e4e4e4;
+  padding: 10rpx 0;
+}
+
+.choice_box .choice_list image {
+  float: left;
+  width: 180rpx;
+  height: 128rpx;
+  margin: 20rpx;
+}
+.title {
+  color: #555;
+  vertical-align: middle;
+  padding: 28rpx 0 0 30rpx;
+  font-size: 15px;
+  font-style: normal;
+  line-height: 22px;
+
+}
+.brief {
+  font-size: 12px;
+  padding: 20rpx 0 0 20rpx;
+}
+.lineOn, .lineDown {
+  font-size: 20rpx;
+  color:#ccc;
+}
+.blog-wrap{
+  height:100%;
+  position:relative;
+}
+.blog-right{
+  float:right;
+  width:98%;
+}
+.blog-left{
+  float:left;
+  width:0;
+  height:500rpx;
+}
+.baseLine {
+  display: block;
+  text-align: center;
+  font-size: 24rpx;
+  color:#666;
+  clear: both;
+  margin-bottom:20rpx;
+}
+.line::before{
+  content:'------------';
+  margin-right:40rpx;
+  color:#ccc;
+}
+.line::after{
+  content:'------------';
+  margin-left:40rpx;
+  color:#ccc;
+}

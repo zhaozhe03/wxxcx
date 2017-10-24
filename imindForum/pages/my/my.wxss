@@ -1,0 +1,59 @@
+page{
+  background-color: #eee;
+  font-family: "Microsoft YaHei" ;
+  color: #aaa;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom,  #4f8edc 0%,#ccc 100%);
+  border-top: 1px solid #4f8edc;
+  position: relative;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #fff;
+  font-size: 14px;
+  padding-bottom: 20px;
+}
+
+
+
+
+.myself_box{
+  margin: 10px;
+}
+.myself_list{
+  height: 35px;
+  margin: 10px auto;
+  background-color: #fff;
+}
+.img{
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-left: 2px;
+  margin-top: 7px;
+}
+.title{
+  font-size: 14px;
+  line-height: 35px;
+  float: left;
+  margin-left: 5px;
+  color: #000;
+}
+.icon{
+  height: 20px;
+  width: 20px;
+  float: right;
+  margin-top: 7.5px;
+  margin-right: 5px;
+}

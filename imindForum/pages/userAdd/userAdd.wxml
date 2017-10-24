@@ -1,0 +1,36 @@
+<form class="form_box" bindsubmit="formBindsubmit" reset="formReset">
+      <view class="order">
+        <label class="input_tit">姓 名：</label>
+        <input name="name" placeholder="请输入中文" placeholder-class="placeholder" value='{{name}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">身份证：</label>
+        <input name="idCard" placeholder="请输入中文" placeholder-class="placeholder" value='{{name}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">职 务：</label>
+        <input name="job" placeholder="请输入中文" placeholder-class="placeholder" value='{{name}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">电 话：</label>
+        <input name="mobile" type="number" placeholder="请输入中文" placeholder-class="placeholder" value='{{name}}' class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">单 位：</label>
+        <input name="workplace" placeholder="请输入中文" placeholder-class="placeholder" class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">发票抬头：</label>
+        <input name="title" placeholder="请输入中文" placeholder-class="placeholder" class="inputwid" />
+      </view>
+      <view class="order">
+        <label class="input_tit">税 号：</label>
+        <input name="dutyParagraph"  placeholder="请输入中文" placeholder-class="placeholder" class="inputwid" />
+      </view>
+      <modal hidden="{{hidden}}" title="温馨提示" bindconfirm="confirm" no-cancel='true'>
+        {{tip}}
+      </modal>
+      <button bindtap='adduser' style='top:90px' form-type="submit" type="primary">继续添加</button>
+      <button bindtap='ToOrder' style='top:120px' form-type="submit" type="warn">查看已添加信息</button>
+  </form>
+   

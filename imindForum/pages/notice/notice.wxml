@@ -1,0 +1,44 @@
+<!--pages/notice/notice.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container">
+
+  <view class="contop">
+    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{picArr}}">
+        <swiper-item catchtap="image_particulars" data-image-index="{{index}}">
+
+          <!--{{item.picurl}}-->
+          <image mode='aspectFill' src="{{item.url}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="person">
+      <image src="{{autherPIc}}" />
+      <text class="pertext-left">{{autherName}}</text>
+    </view>
+    <text class="pertext-right">发布时间：{{createDate}}</text>
+    <view class="zancon">
+      <view class="zancon_left" bindtap="bindUp">
+        <image src="/image/z-green.png" class="" />
+        <text class="zan_leftext">赞</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="blog-wrap">
+    <view class="blog-left"></view>
+    <view class="blog-right">
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+
+    <view class="baseLine">
+      <view class="lineOn">我是有底线的</view>
+      <view class="line" catchtap="showLonLat">明德在线</view>
+      <view class="lineDown">去APP看看吧</view>
+    </view>
+  </view>
+
+</view>
