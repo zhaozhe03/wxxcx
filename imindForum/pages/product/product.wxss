@@ -14,6 +14,12 @@
   bottom: 10px;
   left:5%;
 }
+.wxParse {
+  padding: 0px 12px;
+  font-size: 14px;
+  font-style: normal;
+  margin-bottom:50px;
+}
 /* 去除滚动条 */
 ::-webkit-scrollbar{
   width: 0;

@@ -6,40 +6,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hotList:[
-      {
-        img: "../../images/640.jpg",
-        newsTitle: "世纪明德",
-        userName: "很多刚"
-      },
-      {
-        img: "../../images/640.jpg",
-        newsTitle: "世纪明德",
-        userName: "很多刚"
-      },
-      {
-        img: "../../images/640.jpg",
-        newsTitle: "世纪明德",
-        userName: "很多刚"
-      },
-      {
-        img: "../../images/640.jpg",
-        newsTitle: "世纪明德",
-        userName: "很多刚"
-      },
-      {
-        img: "../../images/640.jpg",
-        newsTitle: "世纪明德",
-        userName: "很多刚"
-      }
-    ]
+    // hotList:[
+    //   {
+    //     img: "../../images/640.jpg",
+    //     newsTitle: "世纪明德",
+    //     userName: "很多刚"
+    //   },
+    //   {
+    //     img: "../../images/640.jpg",
+    //     newsTitle: "世纪明德",
+    //     userName: "很多刚"
+    //   },
+    //   {
+    //     img: "../../images/640.jpg",
+    //     newsTitle: "世纪明德",
+    //     userName: "很多刚"
+    //   },
+    //   {
+    //     img: "../../images/640.jpg",
+    //     newsTitle: "世纪明德",
+    //     userName: "很多刚"
+    //   },
+    //   {
+    //     img: "../../images/640.jpg",
+    //     newsTitle: "世纪明德",
+    //     userName: "很多刚"
+    //   }
+    // ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getNoticeList();
+    this.getNoticeList()
   },
 
   /**
@@ -91,22 +91,22 @@ Page({
   
   },
   toNotice:function(e){
-    console.log(e)
-    var index = e.currentTarget.dataset.itemIndex
-    console.log(index)
+    var index = e.currentTarget.dataset.itemIndex -1
     wx.navigateTo({
-      url: "../notice/notice?noticID=" + index
+      url: "../notice/notice?noticID=" + this.data.hotList[index].id
     })
   },
   getNoticeList: function () {
+    var that = this 
     wx.request({
       url: app.url + "/institution/getArticle.do", //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("公告列表")
-        console.log(res.data)
+        that.setData({
+          hotList:res.data.data.articleList
+        })
       }
     })
   }

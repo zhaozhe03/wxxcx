@@ -5,15 +5,15 @@
       </view>
       <view class="order">
         <label class="input_tit">身份证：</label>
-        <input name="idCard" placeholder="请输入中文" placeholder-class="placeholder" value='{{name}}' class="inputwid" />
+        <input name="idCard" placeholder="请输入中文" placeholder-class="placeholder" value='{{idCard}}' class="inputwid" />
       </view>
       <view class="order">
         <label class="input_tit">职 务：</label>
-        <input name="job" placeholder="请输入中文" placeholder-class="placeholder" value='{{name}}' class="inputwid" />
+        <input name="job" placeholder="请输入中文" placeholder-class="placeholder" value='{{job}}' class="inputwid" />
       </view>
       <view class="order">
         <label class="input_tit">电 话：</label>
-        <input name="mobile" type="number" placeholder="请输入中文" placeholder-class="placeholder" value='{{name}}' class="inputwid" />
+        <input name="mobile" type="number" placeholder="请输入中文" placeholder-class="placeholder" value='{{mobile}}' class="inputwid" />
       </view>
       <view class="order">
         <label class="input_tit">单 位：</label>
@@ -30,7 +30,7 @@
       <modal hidden="{{hidden}}" title="温馨提示" bindconfirm="confirm" no-cancel='true'>
         {{tip}}
       </modal>
-      <button bindtap='adduser' style='top:90px' form-type="submit" type="primary">继续添加</button>
+      <button bindtap='adduser' style='top:90px' form-type="submit" type="primary">添加</button>
       <button bindtap='ToOrder' style='top:120px' form-type="submit" type="warn">查看已添加信息</button>
   </form>
    

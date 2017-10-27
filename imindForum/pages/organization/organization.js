@@ -1,6 +1,6 @@
 // organization.js
 
-
+var app=getApp()
 Page({
 
   /**
@@ -120,7 +120,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      proId:options.proId
+    })
   },
 
   /**
@@ -172,29 +174,25 @@ Page({
 
   },
   formBindsubmit: function (e) {
-    console.log(e)
     if (e.detail.value.name.length == 0 || e.detail.value.userName.length == 0 || e.detail.value.mobile.length == 0 || e.detail.value.inviter.length == 0 || e.detail.value.mobile.length == 0) {
       this.setData({
-        tip: '以上信息不能为空',
         name: '',
         userName: '',
         mobile: '',
         inviter: '',
-        hidden: false
       })
     } else {
       this.setData({
-        name: e.detail.value.oeguserName,//组织机构名称
+        name: e.detail.value.name,//组织机构名称
         userName: e.detail.value.userName,//联系人姓名   
         mobile: e.detail.value.mobile, // 联系人电话
         inviter: e.detail.value.inviter,//邀请人
-        hidden: true
       })
     }
   },
   formReset: function () {
     this.setData({
-      name: e.detail.value.oeguserName,
+      name: e.detail.value.name,
       userName: e.detail.value.userName,
       mobile: e.detail.value.mobile,
       inviter: e.detail.value.inviter
@@ -202,11 +200,8 @@ Page({
   },
   adduser:function () {
     if (this.data.hidden) {
-      wx.redirectTo({
-        url: '../userAdd/userAdd',
-      })
+      this.setInstitution()
     }
-    console.log(this.data.name)
   },
   confirm:function (e) {
     this.setData({
@@ -233,31 +228,79 @@ Page({
           })
         }
     }
-    console.log(citys[index][e.detail.value[1]])
     this.setData({
       provice: this.data.provinces[index],
       city:citys[index][e.detail.value[1]]
     })
   },
   inputFocus:function(e){
-    console.log(e)
     this.setData({
       picker_view: true,
       button_hidden: false,
       button_picker:true
     })
   },
-  getNoticeList: function () {
+  setInstitution: function (institution) {
+    var that = this
     wx.request({
-      url: app.url + "/institution/addInstitution.do?institution="+this.data.user, //仅为示例，并非真实的接口地址
+      url: app.url + "/institution/addInstitution.do", //仅为示例，并非真实的接口地址
+      data:{
+        name: that.data.name,
+        userName: that.data.userName,
+        inviter: that.data.inviter,
+        mobile: that.data.mobile,
+        provice: that.data.provice,
+        city: that.data.city,
+        openId:app.globalData.openid
+      },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
         console.log("添加机构")
+        console.log(res)
+        if (res.data.success == 1) {
+          that.creatOrder()
+        }else{
+          that.setData({
+            hidden: false,
+            tip: res.data.errorMsg
+          })
+        }
+      },
+      fail:function(res){
+        console.log(res)
+      }
+
+    })
+  },
+  creatOrder:function(){
+    var that = this
+    wx.request({
+      url: app.url + "/institution/setOrder.do", //仅为示例，并非真实的接口地址
+      data: {
+        productId:this.data.proId,
+        openId: app.globalData.openid
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log("下订单")
+        console.log(res.data.data.ordernumber)
+        if (res.data.success == 1) {
+          
+          wx.redirectTo({
+            url: '../userAdd/userAdd?ordernumber=' + res.data.data.ordernumber + "&proId=" + that.data.proId,
+          })
+        } else {
+          that.setData({
+            hidden: false,
+            tip: res.data.errorMsg
+          })
+        } 
         
       }
     })
   }
-  
 })

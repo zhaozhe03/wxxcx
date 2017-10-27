@@ -1,4 +1,5 @@
 /* pages/notice/notice.wxss */
+@import "../../wxParse/wxParse.wxss";
 page {
   background-color: #fff;
   font-size: 14px;
@@ -6,10 +7,11 @@ page {
 }
 .container{
   height:100%;
+  padding: 0;
 }
 .contop {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .person {
@@ -108,55 +110,6 @@ page {
   margin-bottom:30px;
 }
 
-.clearfix {
-  clear: both;
-}
-
-.choice_box {
-  padding: 0 20rpx;
-}
-
-.choice_item {
-  border-bottom: 1px solid #e4e4e4;
-  padding: 10rpx 0;
-}
-
-.choice_box .choice_list image {
-  float: left;
-  width: 180rpx;
-  height: 128rpx;
-  margin: 20rpx;
-}
-.title {
-  color: #555;
-  vertical-align: middle;
-  padding: 28rpx 0 0 30rpx;
-  font-size: 15px;
-  font-style: normal;
-  line-height: 22px;
-
-}
-.brief {
-  font-size: 12px;
-  padding: 20rpx 0 0 20rpx;
-}
-.lineOn, .lineDown {
-  font-size: 20rpx;
-  color:#ccc;
-}
-.blog-wrap{
-  height:100%;
-  position:relative;
-}
-.blog-right{
-  float:right;
-  width:98%;
-}
-.blog-left{
-  float:left;
-  width:0;
-  height:500rpx;
-}
 .baseLine {
   display: block;
   text-align: center;
@@ -174,4 +127,9 @@ page {
   content:'------------';
   margin-left:40rpx;
   color:#ccc;
+}
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color:transparent;
 }

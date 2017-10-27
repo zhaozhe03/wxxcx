@@ -1,4 +1,4 @@
-/**index.wxss**/
+/* pages/userOrderList/userOrderList.wxss */
 .lt{
   float: left;
 }
@@ -27,8 +27,9 @@
 
 .textList{
   width: 55%;
-  overflow: visible;
+  overflow: hidden;
   height: 130px;
+  position: static;
 }
 
 .title{
@@ -41,12 +42,13 @@
 }
 
 .text{
-  margin-top: 3px;
+  margin-top: 15px;
   overflow:hidden; 
   text-overflow:ellipsis;
   display:-webkit-box; 
   -webkit-box-orient:vertical;
-   -webkit-line-clamp:5;  
+   -webkit-line-clamp:1;  
+   font-size: 14px;
 }
 
 .img{
@@ -54,6 +56,22 @@
   height: 120px;
   margin: 3px;
 }
+.ordernumber{
+  font-size: 11px;
+   margin-top: 15px;
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+   -webkit-line-clamp:5; 
+}
+.price{
+  position: relative;
+  top:  30px;
+  left: 140px;
+  color:#E64340;
+}
+/* 去除滚动条 */
 ::-webkit-scrollbar{
   width: 0;
   height: 0;

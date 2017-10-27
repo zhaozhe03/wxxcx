@@ -10,7 +10,8 @@
     "pages/TFN/TFN",
     "pages/product/product",
     "pages/BBS/BBS",
-    "pages/notice/notice"
+    "pages/notice/notice",
+    "pages/userOrderList/userOrderList"
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -21,8 +22,8 @@
   "tabBar": {
     "color":"#ccc",
     "selectedColor":"white",
-    "backgroundColor":"#4f8edc",
-    "borderStyle":"#4f8edc",
+    "backgroundColor":"#E64340",
+    "borderStyle":"#E64340",
     "position":"",
     "list": [
       {

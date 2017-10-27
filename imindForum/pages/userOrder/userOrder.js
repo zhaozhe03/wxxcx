@@ -1,111 +1,42 @@
 // pages/userOrder/userOrder.js
-var del = require("../orderList/orderList.js")
+// var del = require("../orderList/orderList.js")
+var app= getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {             
-    // arr:[
-    //   {
-    //     name:"zhaozhe",
-    //     phone:13912345678,
-    //     jop:"世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name:"guoshuai",
-    //     phone:15812345678,
-    //     jop:"北京世纪明德"
-    //   },
-    //   {
-    //     name:"liuzhenda",
-    //     phone:13612345678,
-    //     jop:"世纪明德"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    //   {
-    //     name: "zhaozhe",
-    //     phone: 13912345678,
-    //     jop: "世纪明德（北京）教育科技有限公司"
-    //   },
-    // ],
+  data: {
+    orderShow:false             ,
     pic:'￥19900',
     hidden:true,
-    headerText:"人员信息登记表"
+    headerText:"人员信息登记表",
+    pay:"支付"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     console.log(options)
-    this.setData({
-      arr:JSON.parse(options.arr)
-    })
+    if (options.price == 0){
+      this.setData({
+        orderNumber: options.orderNumber,
+        pic: "",
+        totalPrice: null
+      })
+    }else{
+      this.setData({
+        orderNumber: options.orderNumber,
+        pic: "￥" + options.price,
+        totalPrice: options.price
+      })
+    }
+    
+    
+
+    this.getorderList();
   },
 
   /**
@@ -173,32 +104,23 @@ Page({
     }
     this.setData({
       obj: obj,
-      tip:'您确定要删除,'+obj.name+',电话：'+obj.phone+'的用户么',
+      tip: '您确定要删除,' + obj.name + ',电话：' + obj.mobile+'的用户么',
       hidden:false
     })
   },
   confirm:function(){
-    var arr = this.del(this.data.indexDel)
+    
     this.setData({
       hidden:true,
-      arr:arr
     })
+    this.delUser(this.data.indexDel)
   },
   cancel:function(){
     this.setData({
       hidden:true
     })
   },
-  del: function (delIndex) {
-    var temArray = [];
-    var arr = this.data.arr
-    for (var i = 0; i < arr.length; i++) {
-      if (i != delIndex) {
-        temArray.push(arr[i]);
-      }
-    }
-    return temArray;
-  },
+  // },
   queryMultipleNodes:function(e){
     if (5<=e.detail.scrollLeft<70) {
       this.setData({
@@ -218,37 +140,93 @@ Page({
         textIndex:true
       })
     }
-  }
+  },
 
+  getorderList:function(){
+    var that = this
+    wx.request({
+      url: app.url + "/institution/getContactsByOrder.do",
+      data: {
+        openId: app.globalData.openid,//openId
+        orderNumber: that.data.orderNumber,//订单编号
+      },
+      success: function (res) {
+        console.log(res)
+        console.log(res.data)
+        
+        that.setData({
+          arr: res.data.data.contactsList,
+          pic: res.data.data.order.price
+        })
+       
+      }
+    })
+  },
+  delUser:function(index){
+    var that = this
+    var temArray = [];
+    wx.request({
+      url:app.url+ "/institution / deleteContacts.do",
+      data:{
+        openId: app.globalData.openid,//openId
+        contactsId:that.data.arr[index].id//联系人id
+
+      },
+      success:function(res){
+        
+        temArray: res.data.data.contactsList
+        
+      }
+    })
+  },
+  changeUser:function(index){
+    var that = this
+    wx.request({
+      url: app.url +"/institution/updateContacts.do",
+      data:{
+
+      },
+    })
+  }, 
+  sendOrder:function(){
+    var that = this
+    wx.request({
+      url: app.url + "/banner/orderPay.do",
+      data:{
+        openid: app.globalData.openid,//openId
+        paytype:5,//支付方式
+        underorder: that.data.orderNumber,//订单号
+        totalPrice: that.data.pic,//总价格
+        title:"233"
+      },
+      success:function(res){
+        wx.requestPayment({
+          timeStamp: res.data.data.timeStamp,
+          nonceStr: res.data.data.nonceStr,
+          package: res.data.data.package,
+          signType: 'MD5',
+          paySign: res.data.data.paySign,
+          success: function (res) {
+              console.log(res)
+              that.setData({
+                pay:"已支付",
+                pic:""
+              })
+          },
+          fail: function (res) {
+
+          }
+        })
+      }, fail: function (res) {
+        // fail
+      },
+      complete: function (res) {
+        // complete
+      }
+    })
+  }
 })
 
 
 
-// openModel: function(e) {
-//   let id = e.target.dataset.id;
-//   this.setData({
-//     titles: this.data.tables[0],
-//     cols: this.data.tables[id],
-//     id: id,
-//     show: true
-//   });
-// },
-// dataChange: function(e) {
-//   let cols = this.data.cols;
-//   cols[e.target.dataset.id] = e.detail.value;
-//   console.log(cols);
-//   this.setData({
-//     cols: cols
-//   });
 
-// },
-// editModel(e) {
-//   let tables = this.data.tables;
-//   tables[this.data.id] = this.data.cols;
-
-//   this.setData({
-//     tables: tables,
-//     show: false
-//   });
-
-// },

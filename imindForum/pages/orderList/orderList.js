@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
 
   /**
@@ -34,10 +35,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
-      orderList: JSON.parse(options.arr).reverse(),
+      orderNumber: options.orderNumber,
+      proId: options.proId
     })
-    console.log(this.data.orderList)
+    console.log(this.data.orderNumber)
+    this.getOrderList(options.orderNumber)
   },
 
   /**
@@ -97,34 +101,83 @@ Page({
   },
   sendOrder:function(){
     wx.redirectTo({
-      url: '../userOrder/userOrder?arr='+JSON.stringify(this.data.orderList)
+      url: '../userOrder/userOrder?orderNumber=' + this.data.orderNumber
     })
   },
   attention:function(e){
     var that = this
-    var delIndex = e.currentTarget.dataset.itemIndex
-    var temArray = that.del(delIndex)
-    that.setData({
-      orderList: temArray,
-      hideCommitSuccessToast:false
+    var index = e.currentTarget.dataset.itemIndex
+    var delIndex = that.data.orderList[index].id
+    that.del(delIndex)
+  },
+  //通过指定用户索引修改用户获取
+  reCreate: function (e) {
+    var that = this
+    var list = that.data.orderList
+    var index = e.currentTarget.dataset.itemIndex
+    var userIndex = that.data.orderList[index].id
+    var user = {}
+    for(var i=0;i<=list.length;i++){
+      if(i==index){
+        user=list[i]
+      }
+    }
+    this.setData({
+      userhidden:false,
+      user:user,
+      userIndex
     })
-    
   },
   //删除指定索引用户
   del: function (delIndex) {
     var that = this
-    var temArray = [];
-    var arr = that.data.orderList
-    for (var i = 0; i < arr.length; i++) {
-      if (i != delIndex) {
-        temArray.push(arr[i]);
+    wx.request({
+      url: app.url + "/institution/deleteContacts.do", 
+      data:{
+        openId: app.globalData.openid,
+        contactsId:delIndex
+      },
+      success:function(res){
+        console.log("删除联系人")
+        console.log(res)
+        that.getOrderList(that.data.orderNumber)
       }
-    }
-    return temArray;
+    })
   },
+  //修改联系人
+  reChange:function(){
+    var that = this
+    var user = that.data.user;
+    wx.request({
+      url: app.url + "/institution/updateContacts.do",
+      data: {
+        openId: app.globalData.openid,//openId
+        proid: that.data.proId,//产品id
+        id: that.data.userIndex,//联系人id
+        name: user.name,//联系人姓名,
+        mobile: user.mobile,//联系人电话
+        workplace: user.workplace,//工作单位
+        title: user.title,//发票抬头
+        dutyParagraph: user.dutyParagraph,//税号
+      },
+      success: function (res) {
+        if (res.data.success == 1) {
+          that.getOrderList(that.data.orderNumber)
+        }
+      }
+    })
+  },
+  //人员信息修改
+  changeConfirm: function () {
+    var that=this
+    that.reChange()
+    that.setData({
+      userhidden:true
+    })
+  }, 
   navGetTo:function(){
     wx.navigateTo({
-      url: "../userAdd/userAdd?arr=" + JSON.stringify(this.data.orderList)
+      url: "../userAdd/userAdd?orderNumber=" + this.data.orderNumber
     })
   },
   //滑动事件
@@ -166,34 +219,8 @@ Page({
     var index = e.currentTarget.dataset.index;
     var list = that.data.orderList;
     var lenth = that.data.orderList.length
-    
-    // setTimeout(function(e){
-    //   var margin_right = 0
-    //   var wxstyle = "margin-right:" + margin_right + "px;";
-    //   list[index].wxstyle = wxstyle
-    //   if(that.data.delS=true){
-    //   that.setData({
-    //     orderList: list
-    //   })
-    //   }else{
-    //     that.setData({
-    //       delS:false
-    //     })
-    //   }
-    // },3000)
   },
-  //通过指定用户索引修改用户获取
-  reCreate:function(e){
-    var that = this;
-    var recIndex = e.currentTarget.dataset.itemIndex;
-    var user = that.getUserByID(recIndex)
-    that.setData({
-      userhidden:false,
-      user: user,
-      index: recIndex
-    })
-
-  },
+  
   //获取指定用户信息
   getUserByID:function(index){
     var that = this
@@ -205,30 +232,7 @@ Page({
     }
     
   },
-  //人员信息修改
-  changeConfirm:function(){
-    var that = this
-    var user=that.data.user;
-    var arr = that.data.orderList;
-    var index = that.data.index
-    arr.splice(index,1,user)
-    // for(var i=0;i<=arr.length;i++){
-    //   if(i==index){
-    //     arr[i] = user;
-    //   }
-    //   break
-    // }
-    if (that.data.judge == 1){
-      return
-      console.log(111)
-    }else{
-      that.setData({
-        orderList: arr,
-        userhidden: true
-      })
-    }
-  }
-  , 
+ 
   //弹出框表单添加
   formBindsubmit: function (e) {
     var that = this
@@ -290,6 +294,26 @@ Page({
     that.setData({
       userhidden:true,
       orderList:arr
+    })
+  },
+  getOrderList: function (orderNumber){
+    var that = this
+    wx.request({
+      url: app.url + "/institution/getContactsByOrder.do", //仅为示例，并非真实的接口地址
+      data:{
+        openId: app.globalData.openid,
+        orderNumber: orderNumber
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log("首页产品列表")
+        console.log(res)
+        that.setData({
+          orderList: res.data.data.contactsList
+        })
+      }
     })
   }
 })

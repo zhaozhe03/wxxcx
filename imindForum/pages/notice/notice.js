@@ -23,13 +23,11 @@ Page({
 
   onLoad: function (options) {
     var that = this
-    that.setData({
-      noticeID: options.noticeID
-    })
+    console.log(options.noticID)
     // 论坛详情
-    var url = getApp().url;
+    var url = app.url;
     wx.request({
-      url: url + '/institution/getArticleById.do?articleId=' + options.noticeID,
+      url: url + '/institution/getArticleById.do?articleId=' + options.noticID,
       method: 'GET',
       data: {},
       header: {
@@ -39,11 +37,10 @@ Page({
         console.log("论坛详情页")
         console.log(res)
         that.setData({
-          microblogPicsInfo: res.data.data.Img,
-          createDate: res.data.data.createDate,
+          createDate: res.data.data.createTime.time,
           autherPIc: res.data.data.headImage,
-          autherName: res.data.data.userName,
-          action: res.data.data.info,
+          autherName: res.data.data.author,
+          action: res.data.data.content,
         })
 
         var article = that.data.action;

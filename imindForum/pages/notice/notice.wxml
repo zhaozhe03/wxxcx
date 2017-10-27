@@ -1,31 +1,27 @@
 <!--pages/notice/notice.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container">
-
   <view class="contop">
-    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{picArr}}">
-        <swiper-item catchtap="image_particulars" data-image-index="{{index}}">
-
-          <!--{{item.picurl}}-->
-          <image mode='aspectFill' src="{{item.url}}" class="slide-image" />
-        </swiper-item>
-      </block>
-    </swiper>
-
+   
     <view class="person">
       <image src="{{autherPIc}}" />
       <text class="pertext-left">{{autherName}}</text>
     </view>
     <text class="pertext-right">发布时间：{{createDate}}</text>
     <view class="zancon">
-      <view class="zancon_left" bindtap="bindUp">
+      <!-- <view class="zancon_left" bindtap="bindUp">
         <image src="/image/z-green.png" class="" />
         <text class="zan_leftext">赞</text>
-      </view>
+      </view> -->
+      <!-- <modal hidden="{{hidden}}" title="温馨提示" bindconfirm="confirm" no-cancel="{{nocancel}}">
+        需要获得更多资讯，请下载明德在线APP！
+      </modal> -->
+      <!--<view class="zancon_rig" bindtap="bindDown">
+        <image src="/image/z-gray.png" class="" />
+        <text class="zan_rigext">{{numdown}}</text>
+      </view>-->
     </view>
   </view>
-
   <view class="blog-wrap">
     <view class="blog-left"></view>
     <view class="blog-right">
@@ -33,12 +29,22 @@
         <template is="wxParse" data="{{wxParseData:article.nodes}}" />
       </view>
     </view>
-
     <view class="baseLine">
-      <view class="lineOn">我是有底线的</view>
-      <view class="line" catchtap="showLonLat">明德在线</view>
-      <view class="lineDown">去APP看看吧</view>
+      <view class="lineOn">专注基础教育</view>
+      <view class="line" catchtap="showLonLat">明德论坛</view>
+      <view class="lineDown">做最专业的论坛</view>
     </view>
   </view>
-
+  <view class="comment" wx:for="{{comment}}">
+    <view class="choice_item">
+      <view class="choice_box">
+        <view class="choice_list">
+          <image src="{{item.proImg}}" />
+          <view class="title">{{item.proTitle}}</view>
+          <text class="brief">{{item.proRemark}}</text>
+          <view class="clearfix"></view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

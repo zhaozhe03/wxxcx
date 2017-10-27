@@ -1,19 +1,19 @@
 <!--index.wxml-->
-<image class="header" mode="widthFix" src="../../images/indexHeader.jpg"></image>
+<image class="header" bindtap='topPro' mode="widthFix" src="{{imageHeader}}"></image>
 <view class="proBox">
   <block wx:for="{{arrPro}}"  wx:for-index="table_index" >
     <view class='List' bindtap='tapPro' data-item-index="{{table_index}}" wx:if="{{table_index % 2 == 0}}">
       <view class="textList lt"> 
         <view class="title"><text>{{item.title}}</text></view>
-        <view class="text"><text>{{item.text}}</text></view>
+        <view class="text"><text>{{item.bstractText}}</text></view>
       </view>
-      <image class="img rt" mode="aspectFill" src="{{item.img}}"></image>
+      <image class="img rt" mode="aspectFill" src="{{item.imgUrl}}"></image>
     </view>
     <view class='List' bindtap='tapPro' data-item-index="{{table_index}}" wx:else>
-      <image class="img" mode="aspectFill" src="{{item.img}}"></image>
+      <image class="img" mode="aspectFill" src="{{item.imgUrl}}"></image>
       <view class="textList rt"> 
         <view class="title"><text>{{item.title}}</text></view>
-        <view class="text"><text>{{item.text}}</text></view>
+        <view class="text"><text>{{item.bstractText}}</text></view>
       </view>
     </view>
   </block>

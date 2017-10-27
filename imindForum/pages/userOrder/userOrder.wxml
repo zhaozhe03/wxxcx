@@ -26,18 +26,17 @@
     </view>
   </block>
 </scroll-view>
-<modal hidden="{{hidden}}" title="温馨提示" confirm-text="是的" cancel-text="不" bindconfirm="confirm" bindcancel="cancel" showCancel='false' >
+<modal hidden="{{hidden}}" title="温馨提示" confirm-text="是的" cancel-text="不" bindconfirm="confirm" bindcancel="cancel" showCancel='false'>
         {{tip}}
 </modal>
-<button bindtap='sendOrder' class='button' type='warn'>支付{{pic}}</button>
+<button bindtap='sendOrder' class='button' type='warn'>{{pay}}{{pic}}</button>
 
-
-
-<!-- <view wx:if="{{show}}" class="mask-form">
+<view wx:if="{{orderShow}}">您目前没有订单</view>
+<view wx:if="{{show}}" class="mask-form">
     <view class="mask-content-container" wx:for="{{cols}}" wx:for-item="col" wx:for-index="col_index">
         <text class="list-mask-title">{{titles[col_index]}}</text>
         <input class="list-mask-input" type="text" value="{{col}}" data-id="{{col_index}}" bindblur="dataChange" />
     </view>
     <button class="btn btn-confirm" type="success" bindtap="editModel">确认</button>
     <button class="btn btn-cancle" type="default" bindtap="closeModel">取消</button>
-</view>  -->
+</view>  

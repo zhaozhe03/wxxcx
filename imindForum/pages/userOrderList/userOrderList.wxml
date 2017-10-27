@@ -1,0 +1,16 @@
+<!--pages/userOrderList/userOrderList.wxml-->
+<view class="proBox">
+  <block wx:for="{{oderList}}"  wx:for-index="table_index" >
+    <view class='List' bindtap='toList' data-item-index="{{table_index}}" >
+      
+      <view class="textList rt"> 
+        <view class="ordernumber"><text>单号:{{item.ordernumber}}</text></view>
+        <view class="text"><text>{{item.productName}}</text></view>
+        <view class="price"><text>{{item.price}}</text></view>
+         <view class='state'>{{item.ispay?"已支付":"未支付"}}</view> 
+      </view>
+      <image class="img lt" mode="aspectFill" src="{{item.imgUrl}}"></image>
+      
+    </view>
+  </block>
+</view>
