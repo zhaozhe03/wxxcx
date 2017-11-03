@@ -7,19 +7,19 @@ Page({
   data: {
     hidden:true,
     showtoast:0,
-    arr:[]
+    arr:[],
+    num:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('options.orderNumber')
-    console.log(options.ordernumber)
     this.setData({
-      orderNumber: options.ordernumber,
-      proId: options.proId
+      orderNumber: options.orderNumber,
+      proId: options.proId,
     })
+    this.getOrderList(options.orderNumber)
   },
 
   /**
@@ -167,9 +167,9 @@ Page({
         'Accept': 'application/json'
       },
       success: function (res) {
-        console.log(res)
         if (res.data.success == 1){
           that.formReset()
+          that.getOrderList(that.data.orderNumber)
           if (that.data.showtoast == 1) {
             wx.showToast({
               title: '添加成功',
@@ -178,7 +178,7 @@ Page({
               mask: true,
               complete: function () {
                 that.setData({
-                  showtoast: 0
+                  showtoast: 0,
                 })
               }
             })
@@ -205,6 +205,24 @@ Page({
   confirm:function(e){
     this.setData({
       hidden:true
+    })
+  },
+  getOrderList: function (orderNumber) {
+    var that = this
+    wx.request({
+      url: app.url + "/institution/getContactsByOrder.do", //仅为示例，并非真实的接口地址
+      data: {
+        openId: app.globalData.openid,
+        orderNumber: orderNumber
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        that.setData({
+          num: res.data.data.contactsList.length
+        })
+      }
     })
   }
 })

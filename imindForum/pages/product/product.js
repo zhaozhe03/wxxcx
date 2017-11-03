@@ -38,7 +38,6 @@ Page({
     
   },
   getUserInfo: function (e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -52,13 +51,11 @@ Page({
     if (wx.openSetting) {
       wx.openSetting({
         success: (res) => {
-          console.log(JSON.stringify(res));
           app.getUserInfo();
 
         }
       })
     } else {
-      console.log('不支持 wx.openSetting');
     }
   },
   selectInstitutionByOpenId:function(){
@@ -69,7 +66,6 @@ Page({
         openId: app.globalData.openid
       },
       success:function(res){
-        console.log("res")
         if(res.data.success==1){
           that.creatOrder()
         }else{
@@ -92,8 +88,6 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("下订单")
-        console.log(res.data.data.ordernumber)
         if (res.data.success == 1) {
 
           wx.redirectTo({
@@ -111,8 +105,6 @@ Page({
         productId: proId
       },
       success:function(res){
-        console.log("产品详情")
-        console.log(res)
         var abstractText = res.data.data.abstractText
         var htmlpS = "<p style='line-height:2'>";
         var htmlp = "</p><br><p style='line-height:2;margin:20px 0'>";

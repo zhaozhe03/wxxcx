@@ -15,7 +15,7 @@
         
       </block>
     </view>
-    <button bindtap='sendOrder' class='button' type='warn'>提交订单</button>
+    <button bindtap='sendOrder' class='button' type='warn'>提交 订单共计{{num}}人</button>
     <image class="img" src = "../../images/add.png" catchtap="navGetTo"></image>
     
     <modal hidden="{{userhidden}}" title="人员信息" form-type="submit" no-cancel="true" confirm-text="取消"  bindconfirm="changeCancel"  showCancel='false' >

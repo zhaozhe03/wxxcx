@@ -23,7 +23,6 @@ Page({
 
   onLoad: function (options) {
     var that = this
-    console.log(options.noticID)
     // 论坛详情
     var url = app.url;
     wx.request({
@@ -34,8 +33,6 @@ Page({
         'Accept': 'application/json'
       },
       success: function (res) {
-        console.log("论坛详情页")
-        console.log(res)
         that.setData({
           createDate: res.data.data.createTime.time,
           autherPIc: res.data.data.headImage,

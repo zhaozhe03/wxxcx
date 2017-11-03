@@ -23,8 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("app")
-    console.log(app)
     var that = this
     app.getUserInfo(function (userInfo) {
       //更新数据
@@ -84,7 +82,6 @@ Page({
   },
   navgetTo:function(e){
     var index = e.currentTarget.dataset.itemIndex;
-    console.log(index)
     switch(index){
       case 0:{
         wx.navigateTo({

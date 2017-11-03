@@ -1,5 +1,3 @@
-
-
 App({
   topBarlist: [],
   lastRequsetTime: 0,

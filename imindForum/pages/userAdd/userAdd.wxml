@@ -31,6 +31,6 @@
         {{tip}}
       </modal>
       <button bindtap='adduser' style='top:90px' form-type="submit" type="primary">添加</button>
-      <button bindtap='ToOrder' style='top:120px' form-type="submit" type="warn">查看已添加信息</button>
+      <button bindtap='ToOrder' style='top:120px' form-type="submit" type="warn">查看  已添加{{num}}人</button>
   </form>
    

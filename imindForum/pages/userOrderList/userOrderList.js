@@ -17,7 +17,6 @@ Page({
     wx.request({
       url: app.url + "/institution/getOrderByInstitution.do?openId=" + app.globalData.openid ,
       success:function(res){
-        console.log(res)
         that.setData({
           oderList:res.data.data
         })
@@ -76,7 +75,6 @@ Page({
   },
   toList:function(e){
     var that = this
-    console.log(e)
     var index = e.currentTarget.dataset.itemIndex
     wx.navigateTo({
       url: '../userOrder/userOrder?orderNumber=' + that.data.oderList[index].ordernumber +"&price="+ that.data.oderList[index].price,

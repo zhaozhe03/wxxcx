@@ -7,40 +7,16 @@ Page({
   data: {
     hidden:true,
     userhidden:true,
-    // orderList:[
-    //   {
-    //     name:1111,
-    //     mobile:13947894561,
-    //     workplace:"北京世纪明德教育科技有限公司"
-    //   },
-    //   {
-    //     name: 1111,
-    //     mobile: 13947894562,
-    //     workplace: "北京世纪明德教育科技有限公司"
-    //   },
-    //   {
-    //     name: 1111,
-    //     mobile: 13947894563,
-    //     workplace: "北京世纪明德教育科技有限公司"
-    //   },
-    //   {
-    //     name: 1111,
-    //     mobile: 13947894564,
-    //     workplace: "北京世纪明德教育科技有限公司"
-    //   },
-    // ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       orderNumber: options.orderNumber,
       proId: options.proId
     })
-    console.log(this.data.orderNumber)
     this.getOrderList(options.orderNumber)
   },
 
@@ -138,8 +114,6 @@ Page({
         contactsId:delIndex
       },
       success:function(res){
-        console.log("删除联系人")
-        console.log(res)
         that.getOrderList(that.data.orderNumber)
       }
     })
@@ -176,8 +150,8 @@ Page({
     })
   }, 
   navGetTo:function(){
-    wx.navigateTo({
-      url: "../userAdd/userAdd?orderNumber=" + this.data.orderNumber
+    wx.redirectTo({
+      url: "../userAdd/userAdd?orderNumber=" + this.data.orderNumber 
     })
   },
   //滑动事件
@@ -189,10 +163,8 @@ Page({
   },
   touchM:function(e){
     var moveX = e.touches[0].clientX;
-    console.log(moveX)
     var margin_left = 0
     var changeX = moveX - this.data.starX;
-    console.log(changeX)
     if(changeX>0){
       changeX = 0
     }
@@ -308,10 +280,9 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("首页产品列表")
-        console.log(res)
         that.setData({
-          orderList: res.data.data.contactsList
+          orderList: res.data.data.contactsList,
+          num: res.data.data.contactsList.length
         })
       }
     })

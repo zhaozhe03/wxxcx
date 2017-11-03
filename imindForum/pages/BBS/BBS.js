@@ -6,33 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // hotList:[
-    //   {
-    //     img: "../../images/640.jpg",
-    //     newsTitle: "世纪明德",
-    //     userName: "很多刚"
-    //   },
-    //   {
-    //     img: "../../images/640.jpg",
-    //     newsTitle: "世纪明德",
-    //     userName: "很多刚"
-    //   },
-    //   {
-    //     img: "../../images/640.jpg",
-    //     newsTitle: "世纪明德",
-    //     userName: "很多刚"
-    //   },
-    //   {
-    //     img: "../../images/640.jpg",
-    //     newsTitle: "世纪明德",
-    //     userName: "很多刚"
-    //   },
-    //   {
-    //     img: "../../images/640.jpg",
-    //     newsTitle: "世纪明德",
-    //     userName: "很多刚"
-    //   }
-    // ]
   },
 
   /**

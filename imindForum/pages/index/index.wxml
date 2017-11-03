@@ -2,14 +2,21 @@
 <image class="header" bindtap='topPro' mode="widthFix" src="{{imageHeader}}"></image>
 <view class="proBox">
   <block wx:for="{{arrPro}}"  wx:for-index="table_index" >
-    <view class='List' bindtap='tapPro' data-item-index="{{table_index}}" wx:if="{{table_index % 2 == 0}}">
+    <!-- <view class='List' bindtap='tapPro' data-item-index="{{table_index}}" wx:if="{{table_index % 2 == 0}}">
       <view class="textList lt"> 
         <view class="title"><text>{{item.title}}</text></view>
         <view class="text"><text>{{item.bstractText}}</text></view>
       </view>
       <image class="img rt" mode="aspectFill" src="{{item.imgUrl}}"></image>
-    </view>
-    <view class='List' bindtap='tapPro' data-item-index="{{table_index}}" wx:else>
+    </view> -->
+    <!-- <view class='List' bindtap='tapPro' data-item-index="{{table_index}}" wx:else>
+      <image class="img" mode="aspectFill" src="{{item.imgUrl}}"></image>
+      <view class="textList rt"> 
+        <view class="title"><text>{{item.title}}</text></view>
+        <view class="text"><text>{{item.bstractText}}</text></view>
+      </view>
+    </view> -->
+    <view class='List' bindtap='tapPro' data-item-index="{{table_index}}" >
       <image class="img" mode="aspectFill" src="{{item.imgUrl}}"></image>
       <view class="textList rt"> 
         <view class="title"><text>{{item.title}}</text></view>

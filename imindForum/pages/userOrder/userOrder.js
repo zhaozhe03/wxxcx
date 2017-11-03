@@ -18,8 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    console.log(options)
     if (options.price == 0){
       this.setData({
         orderNumber: options.orderNumber,
@@ -151,8 +149,6 @@ Page({
         orderNumber: that.data.orderNumber,//订单编号
       },
       success: function (res) {
-        console.log(res)
-        console.log(res.data)
         
         that.setData({
           arr: res.data.data.contactsList,
@@ -207,7 +203,6 @@ Page({
           signType: 'MD5',
           paySign: res.data.data.paySign,
           success: function (res) {
-              console.log(res)
               that.setData({
                 pay:"已支付",
                 pic:""

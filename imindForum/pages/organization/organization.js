@@ -217,9 +217,7 @@ Page({
 
   },
   bindChange:function(e){
-    console.log(e)
     var index = e.detail.value[0]
-    console.log(this.data.provinces[index])
     var citys=this.data.citys
     for(var i= 0;i<citys.length;i++){
         if(i==index){
@@ -257,8 +255,6 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("添加机构")
-        console.log(res)
         if (res.data.success == 1) {
           that.creatOrder()
         }else{
@@ -269,7 +265,6 @@ Page({
         }
       },
       fail:function(res){
-        console.log(res)
       }
 
     })
@@ -286,12 +281,10 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("下订单")
-        console.log(res.data.data.ordernumber)
         if (res.data.success == 1) {
           
           wx.redirectTo({
-            url: '../userAdd/userAdd?ordernumber=' + res.data.data.ordernumber + "&proId=" + that.data.proId,
+            url: '../userAdd/userAdd?orderNumber=' + res.data.data.ordernumber + "&proId=" + that.data.proId,
           })
         } else {
           that.setData({
